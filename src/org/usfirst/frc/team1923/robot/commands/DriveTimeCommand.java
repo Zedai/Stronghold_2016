@@ -6,19 +6,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * 
  * @author Xavier (1/18/16)
+ * @modified Saikiran Nakka (1/19/16)
  *
  */
 
 public class DriveTimeCommand extends Command {
 
 	private double speed;
-	private double timeOut;
 	
 	public DriveTimeCommand(double speed, double timeOut){
 		requires(Robot.driveSubsystem);
 		setTimeout(timeOut);
 		this.speed = speed;
-		this.timeOut = timeOut;
 	}
 
 	protected void initialize() {
@@ -30,7 +29,7 @@ public class DriveTimeCommand extends Command {
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	protected void end() {
